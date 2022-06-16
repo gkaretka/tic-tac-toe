@@ -14,7 +14,12 @@ class Tile extends Component {
     );
   }
 
+  reset = () => {
+    this.setState({ ticked: false, owner: null });
+  }
+
   tick = () => {
+    if (this.state.owner !== null) return;
     this.setState({ ticked: true, owner: this.props.playerActive });
     this.props.updateGame(this.props.id);
   }
